@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+.video-main-div {
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.backward-double-click-seek,
+.forward-double-click-seek {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: #fff;
+  font-size: 2rem;
+  padding: 5rem;
+  visibility: hidden;
+  animation: background-color-animation 2s ease-in-out infinite;
+  border-radius: 50%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.backward-double-click-seek {
+  left: 10%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.forward-double-click-seek {
+  right: 10%;
+}
+
+.active {
+  visibility: visible;
+}
+
+.main {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  align-content: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  height: 100vh;
+  background: radial-gradient(50vw at 50% 50%, #fff 20%, #000 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.App-link {
-  color: #61dafb;
+.player-wrapper {
+  width: 80%;
+  filter: drop-shadow(0 0 10px #000);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.heading-1 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  transform: skewY(-10deg);
+  transform: skewY(356deg);
+  text-shadow: -1px -1px 0 #19232e, -2px -2px 0 #212b39, -3px -3px 0 #141e2a,
+    -4px -4px 0 #121b2d, -5px -5px 0 #9bacbe, -6px -6px 0 #1f2935,
+    -7px -7px 0 #111b29, -8px -8px 0 #121d27, -30px 20px 40px dimgrey;
+}
+/* background white color animaion */
+@keyframes background-color-animation {
+  0% {
+    background-color: rgba(255, 255, 255, 0.26);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    background-color: rgba(255, 255, 255, 0.37);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  75% {
+    background-color: rgba(255, 255, 255, 0.63);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .backward-double-click-seek,
+  .forward-double-click-seek {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+  .heading-1 {
+    font-size: 6vw;
+  }
+  .video-js.vjs-fluid {
+    height: 47vh !important;
+  }
+  .main {
+    background: radial-gradient(65vw at 50% 50%, #fff 20%, #000 100%);
   }
 }
